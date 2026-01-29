@@ -3,51 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future Dev | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>My Creative Space ✨</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --pastel-pink: #ffeef2;
+            --pastel-blue: #e0f2fe;
+            --accent-peach: #ffb3a7;
+            --text-main: #5c5c5c;
+            --white: rgba(255, 255, 255, 0.85);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-blue));
+            color: var(--text-main);
+        }
+
+        /* The Main "Notebook" Container */
+        .container {
+            background: var(--white);
+            backdrop-filter: blur(12px);
+            width: 90%;
+            max-width: 550px;
+            height: 75vh;
+            border-radius: 40px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            border: 3px solid white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            background: white;
+            border: 2px solid #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            color: var(--text-main);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-peach);
+            color: var(--accent-peach);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        }
+
+        /* Page Content Logic */
+        .page {
+            display: none; /* Hidden by default */
+            animation: slideUp 0.5s ease;
+            text-align: center;
+            overflow-y: auto;
+        }
+
+        .page.active {
+            display: block; /* Shown when active */
+        }
+
+        /* Typography & Elements */
+        h1 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--accent-peach);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .profile-icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            text-align: left;
+        }
+
+        .pill {
+            display: inline-block;
+            background: var(--pastel-pink);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 5px;
+            font-weight: 600;
+        }
+
+        .cute-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: var(--accent-peach);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .cute-link:hover {
+            filter: brightness(1.05);
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom Scrollbar for the cute vibe */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #eee; border-radius: 10px; }
+    </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">NextGen.js</div>
-        <ul>
-            <li><a href="#" onclick="showPage('about')">About</a></li>
-            <li><a href="#" onclick="showPage('projects')">Projects</a></li>
-            <li><a href="#" onclick="showPage('resume')">Resume</a></li>
-            <li><a href="#" onclick="showPage('contact')">Contact</a></li>
-        </ul>
-    </nav>
+    <div class="container">
+        <nav>
+            <button class="nav-btn" onclick="showPage('about')">🏠 Home</button>
+            <button class="nav-btn" onclick="showPage('projects')">💻 Work</button>
+            <button class="nav-btn" onclick="showPage('resume')">📝 Experience</button>
+            <button class="nav-btn" onclick="showPage('contact')">💌 Contact</button>
+        </nav>
 
-    <main id="content">
-        <section id="about" class="page active">
-            <h1>Hello, I'm a CS Student! 🚀</h1>
-            <p>I'm currently diving deep into the world of algorithms and web development. I love turning complex problems into clean, functional code.</p>
-            <div class="badge">Eager to Learn</div>
-        </section>
+        <main>
+            <section id="about" class="page active">
+                <span class="profile-icon">👩‍💻</span>
+                <h1>Hello, World!</h1>
+                <p>I'm an eager Computer Science student with a passion for creative coding and beautiful interfaces. I spend my days learning new languages and my nights drinking tea and debugging!</p>
+                <div>
+                    <span class="pill">Learning React</span>
+                    <span class="pill">UI Design</span>
+                    <span class="pill">Java Lover</span>
+                </div>
+            </section>
 
-        <section id="projects" class="page">
-            <h1>My Projects 🛠️</h1>
-            <div class="project-card">
-                <h3>Weather App</h3>
-                <p>A simple app using Fetch API to get real-time weather data.</p>
-            </div>
-        </section>
+            <section id="projects" class="page">
+                <h1>My Projects 🛠️</h1>
+                <div class="card">
+                    <h3>✨ Sparkle Logic</h3>
+                    <p>A logic gate simulator built with simple JavaScript to help my classmates study for finals.</p>
+                </div>
+                <div class="card">
+                    <h3>🌸 Petal Portfolio</h3>
+                    <p>My very first personal website (this one!) focusing on aesthetic and clean code.</p>
+                </div>
+            </section>
 
-        <section id="resume" class="page">
-            <h1>My Journey 📚</h1>
-            <ul>
-                <li><strong>University of Technology</strong> - BS in Computer Science (Ongoing)</li>
-                <li><strong>Certifications:</strong> JavaScript Algorithms & Data Structures</li>
-            </ul>
-        </section>
+            <section id="resume" class="page">
+                <h1>My Journey 📚</h1>
+                <div class="card">
+                    <strong>Current Degree</strong>
+                    <p>B.S. in Computer Science<br>University of Tech • 2024-2028</p>
+                </div>
+                <div class="card">
+                    <strong>Technical Skills</strong>
+                    <p>JavaScript (ES6+), HTML5, CSS3, Python, C++, Git/GitHub.</p>
+                </div>
+            </section>
 
-        <section id="contact" class="page">
-            <h1>Let's Connect! ✉️</h1>
-            <p>Email: student@example.com</p>
-            <p>GitHub: github.com/username</p>
-        </section>
-    </main>
+            <section id="contact" class="page">
+                <h1>Get in Touch! 💌</h1>
+                <p>I'm always looking for study buddies or internship opportunities. Let's talk!</p>
+                <p><strong>Email:</strong> hello@studentlife.edu</p>
+                <a href="#" class="cute-link">Download My Full CV</a>
+            </section>
+        </main>
+    </div>
 
-    <script src="script.js"></script>
+    <script>
+        /* --- JAVASCRIPT LOGIC --- */
+        function showPage(pageId) {
+            // Get all sections that have the class 'page'
+            const pages = document.querySelectorAll('.page');
+
+            // Hide every page by removing the 'active' class
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            // Find the page that was clicked and make it visible
+            const selectedPage = document.getElementById(pageId);
+            selectedPage.classList.add('active');
+        }
+    </script>
 </body>
 </html>
