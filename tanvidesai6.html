@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Pastel Workspace ✨</title>
+    <title>Sukhman's Portfolio ✨</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* --- THE VIBE (Variables) --- */
         :root {
             --bg-gradient: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
             --accent-gradient: linear-gradient(to right, #ff9a9e 0%, #fecfef 100%);
             --glass-white: rgba(255, 255, 255, 0.7);
-            --text-dark: #6d6d6d;
-            --soft-blue: #d4fc79;
+            --text-dark: #5c5c5c;
             --soft-purple: #e2d9ff;
             --soft-pink: #ffe3ec;
         }
@@ -35,56 +33,52 @@
             color: var(--text-dark);
         }
 
-        /* --- BACKGROUND DECO --- */
         .blob {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             background: var(--soft-purple);
             filter: blur(80px);
             border-radius: 50%;
             z-index: -1;
-            animation: float 10s infinite alternate;
+            animation: float 12s infinite alternate;
         }
 
         @keyframes float {
-            from { transform: translate(0, 0); }
-            to { transform: translate(50px, 50px); }
+            from { transform: translate(-20px, -20px); }
+            to { transform: translate(60px, 60px); }
         }
 
-        /* --- THE MAIN CARD --- */
         .glass-container {
             background: var(--glass-white);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             width: 90%;
-            max-width: 500px;
-            height: 80vh;
+            max-width: 550px;
+            height: 85vh;
             border-radius: 50px;
             border: 2px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
-            padding: 2rem;
+            padding: 2.5rem;
             position: relative;
         }
 
-        /* --- CUTIE NAVIGATION --- */
         nav {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
         }
 
         .nav-link {
-            padding: 10px 18px;
+            padding: 12px 20px;
             border-radius: 20px;
             background: white;
             border: none;
             font-family: 'Fredoka', sans-serif;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             color: #888;
@@ -97,54 +91,39 @@
             color: #ff85a1;
         }
 
-        /* --- CONTENT SECTIONS --- */
         .page {
             display: none;
             animation: fadeIn 0.6s ease;
-            text-align: center;
+            text-align: left;
             overflow-y: auto;
-            padding-right: 5px;
+            padding-right: 10px;
         }
 
         .page.active { display: block; }
 
         @keyframes fadeIn {
-            from { opacity: 0; filter: blur(10px); transform: translateY(10px); }
+            from { opacity: 0; filter: blur(5px); transform: translateY(10px); }
             to { opacity: 1; filter: blur(0); transform: translateY(0); }
         }
 
-        /* --- DECORATIVE ELEMENTS --- */
         .name-title {
             font-family: 'Fredoka', sans-serif;
             font-weight: 600;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             background: linear-gradient(45deg, #ff9a9e 0%, #a18cd1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-
-        .avatar-circle {
-            width: 90px;
-            height: 90px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 3rem;
-            box-shadow: 0 10px 20px rgba(255, 154, 158, 0.2);
-            border: 4px solid var(--soft-pink);
+            margin: 0;
+            text-align: center;
         }
 
         .content-card {
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 25px;
             padding: 20px;
             margin: 15px 0;
-            text-align: left;
             border: 1px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
         }
 
         .tag-pill {
@@ -155,27 +134,14 @@
             font-size: 0.75rem;
             margin: 4px;
             font-weight: 600;
-            color: #9e9e9e;
-            border: 1px solid #f0f0f0;
+            color: #ff85a1;
+            border: 1px solid var(--soft-pink);
         }
 
-        .contact-btn {
-            background: var(--accent-gradient);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-family: 'Fredoka', sans-serif;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 10px 20px rgba(255, 154, 158, 0.3);
-            transition: 0.3s;
-        }
+        h2 { font-family: 'Fredoka'; color: #a18cd1; margin-top: 0; }
+        h3 { font-family: 'Fredoka'; color: #ff85a1; margin-bottom: 5px; }
+        p { line-height: 1.6; font-size: 0.95rem; }
 
-        .contact-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(255, 154, 158, 0.4); }
-
-        /* Scrollbar */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-thumb { background: var(--soft-pink); border-radius: 10px; }
     </style>
@@ -194,54 +160,58 @@
 
         <main>
             <section id="about" class="page active">
-                <div class="avatar-circle">👩‍💻</div>
-                <h1 class="name-title">Hi, I'm [Name]!</h1>
-                <p>A CS student chasing dreams and semicolon errors. I love creating digital magic that feels like a warm hug. 🌷</p>
-                <div style="margin-top: 20px;">
-                    <span class="tag-pill">☁️ Cloud Computing</span>
-                    <span class="tag-pill">🎀 UI Design</span>
-                    <span class="tag-pill">☕ Coffee & Code</span>
+                <h1 class="name-title">Hi, I'm Sukhman!</h1>
+                <div class="content-card">
+                    <h2>About Me</h2>
+                    <p>I am a computer science student at <strong>Dougherty Valley High School</strong> with a 4.0 GPA. I am deeply passionate about coding, problem-solving, and building aesthetic digital experiences.</p>
+                    <div style="text-align: center;">
+                        <span class="tag-pill">Python</span>
+                        <span class="tag-pill">Java</span>
+                        <span class="tag-pill">HTML/CSS</span>
+                        <span class="tag-pill">JavaScript</span>
+                    </div>
                 </div>
             </section>
 
             <section id="projects" class="page">
-                <h2 style="font-family: 'Fredoka'; color: #ff85a1;">My Projects 🎨</h2>
+                <h1 class="name-title" style="font-size: 1.8rem;">My Creations 🎨</h1>
                 <div class="content-card">
-                    <h4 style="margin:0; color: #a18cd1;">🧁 Cupcake Compiler</h4>
-                    <p style="font-size: 0.9rem; margin-top: 5px;">A custom syntax theme that makes code look like candy.</p>
+                    <h3>💎 Luxe Clothing Brand</h3>
+                    <p>Designed and developed a sleek, high-end website for a clothing brand. Focused on a luxury user experience with clean navigation and modern aesthetics.</p>
+                    <p style="font-size: 0.85rem; font-style: italic;">Created using HTML, CSS, and JS logic.</p>
                 </div>
                 <div class="content-card">
-                    <h4 style="margin:0; color: #a18cd1;">🌙 Dream Journal</h4>
-                    <p style="font-size: 0.9rem; margin-top: 5px;">An encrypted React app to save your nightly thoughts.</p>
+                    <h3>🌟 Future Projects</h3>
+                    <p>I am currently exploring full-stack development and looking forward to integrating AI-driven features into my web apps!</p>
                 </div>
             </section>
 
             <section id="resume" class="page">
-                <h2 style="font-family: 'Fredoka'; color: #ff85a1;">Experience 🎀</h2>
+                <h1 class="name-title" style="font-size: 1.8rem;">Experience 🎀</h1>
                 <div class="content-card">
-                    <strong style="font-size: 0.8rem; color: #888;">2024 - PRESENT</strong>
-                    <p style="margin: 5px 0;"><strong>Computer Science Major</strong><br>Learning to build the future, one line at a time.</p>
+                    <h3>Education</h3>
+                    <p><strong>Dougherty Valley High School</strong><br>Current Student | GPA: 4.0</p>
                 </div>
                 <div class="content-card">
-                    <strong style="font-size: 0.8rem; color: #888;">SKILLS</strong>
-                    <p style="margin: 5px 0; font-size: 0.9rem;">HTML, CSS, JS, Python, and being a fast learner! ✨</p>
+                    <h3>Skills & Toolkit</h3>
+                    <p>Proficient in Python and Java. Currently mastering web technologies to create functional and pretty interfaces.</p>
                 </div>
             </section>
 
-            <section id="contact" class="page">
-                <h2 style="font-family: 'Fredoka'; color: #ff85a1;">Let's Talk! ☁️</h2>
-                <p>I'm always open to new adventures and learning opportunities!</p>
-                <p style="color: #ff85a1; font-weight: 600;">hello@yourmail.com</p>
-                <button class="contact-btn">Say Hello!</button>
+            <section id="contact" class="page" style="text-align: center;">
+                <h1 class="name-title">Let's Connect! ☁️</h1>
+                <div class="content-card">
+                    <p>I'm always looking for study buddies, collaborators, or internship opportunities.</p>
+                    <p style="font-weight: 600; color: #ff85a1; font-size: 1.1rem;">hello@sukhman.dev</p>
+                </div>
+                <p>Check out my code on GitHub!</p>
             </section>
         </main>
     </div>
 
     <script>
         function showPage(pageId) {
-            // Hide all
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            // Show the one
             document.getElementById(pageId).classList.add('active');
         }
     </script>
