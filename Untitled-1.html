@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future Dev | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">NextGen.js</div>
+        <ul>
+            <li><a href="#" onclick="showPage('about')">About</a></li>
+            <li><a href="#" onclick="showPage('projects')">Projects</a></li>
+            <li><a href="#" onclick="showPage('resume')">Resume</a></li>
+            <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="content">
+        <section id="about" class="page active">
+            <h1>Hello, I'm a CS Student! 🚀</h1>
+            <p>I'm currently diving deep into the world of algorithms and web development. I love turning complex problems into clean, functional code.</p>
+            <div class="badge">Eager to Learn</div>
+        </section>
+
+        <section id="projects" class="page">
+            <h1>My Projects 🛠️</h1>
+            <div class="project-card">
+                <h3>Weather App</h3>
+                <p>A simple app using Fetch API to get real-time weather data.</p>
+            </div>
+        </section>
+
+        <section id="resume" class="page">
+            <h1>My Journey 📚</h1>
+            <ul>
+                <li><strong>University of Technology</strong> - BS in Computer Science (Ongoing)</li>
+                <li><strong>Certifications:</strong> JavaScript Algorithms & Data Structures</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="page">
+            <h1>Let's Connect! ✉️</h1>
+            <p>Email: student@example.com</p>
+            <p>GitHub: github.com/username</p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
