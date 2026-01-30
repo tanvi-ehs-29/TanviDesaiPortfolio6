@@ -3,216 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sukhman's Portfolio ✨</title>
+    <title>Tanvi Desai | Portfolio</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-gradient: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-            --accent-gradient: linear-gradient(to right, #ff9a9e 0%, #fecfef 100%);
-            --glass-white: rgba(255, 255, 255, 0.7);
-            --text-dark: #5c5c5c;
-            --soft-purple: #e2d9ff;
-            --soft-pink: #ffe3ec;
+            --primary: #a29bfe;
+            --secondary: #fab1a0;
+            --text-main: #1a1a1a;
+            --text-body: #4a4a4a;
+            --glass: rgba(255, 255, 255, 0.6);
+            --border: rgba(255, 255, 255, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Quicksand', sans-serif;
-            background: #fdfcfb;
-            background-image: 
-                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
-                radial-gradient(at 50% 0%, #ffdee9 0, transparent 50%), 
-                radial-gradient(at 100% 0%, #b5fffc 0, transparent 50%);
-            overflow: hidden;
-            color: var(--text-dark);
-        }
-
-        .blob {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: var(--soft-purple);
-            filter: blur(80px);
-            border-radius: 50%;
-            z-index: -1;
-            animation: float 12s infinite alternate;
-        }
-
-        @keyframes float {
-            from { transform: translate(-20px, -20px); }
-            to { transform: translate(60px, 60px); }
-        }
-
-        .glass-container {
-            background: var(--glass-white);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            width: 90%;
-            max-width: 550px;
-            height: 85vh;
-            border-radius: 50px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            padding: 2.5rem;
+            align-items: center;
+            overflow-x: hidden;
             position: relative;
+            font-family: 'Open Sans', sans-serif;
+            animation: colorShift 25s ease infinite;
+        }
+
+        @keyframes colorShift {
+            0%   { background-color: #f0fff4; } 
+            25%  { background-color: #fff5f7; } 
+            50%  { background-color: #f0f7ff; } 
+            75%  { background-color: #f8f0ff; } 
+            100% { background-color: #f0fff4; }
+        }
+
+        body::before, body::after {
+            content: "";
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.3;
+            animation: float 15s infinite alternate;
+        }
+        body::before { background: #d6e4ff; top: -10%; left: -10%; }
+        body::after { background: #ffd6e8; bottom: -10%; right: -10%; animation-delay: -5s; }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 50px); }
         }
 
         nav {
+            margin-top: 30px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 10px 25px;
+            border-radius: 100px;
             display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 2rem;
+            gap: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
         }
 
-        .nav-link {
-            padding: 12px 20px;
-            border-radius: 20px;
-            background: white;
-            border: none;
-            font-family: 'Fredoka', sans-serif;
-            font-size: 0.9rem;
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            font-size: 1.1rem;
             cursor: pointer;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            color: #888;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            padding: 12px 22px;
+            border-radius: 50px;
+            transition: 0.4s ease;
         }
 
-        .nav-link:hover {
-            transform: scale(1.1);
-            background: var(--soft-pink);
-            color: #ff85a1;
+        nav a:hover, nav a.active-link {
+            background: white;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            margin: 70px 0;
+            z-index: 10;
         }
 
         .page {
             display: none;
-            animation: fadeIn 0.6s ease;
-            text-align: left;
-            overflow-y: auto;
-            padding-right: 10px;
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            padding: 60px;
+            border-radius: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.02);
+            border: 1px solid var(--border);
+            animation: fadeIn 0.8s ease;
         }
 
-        .page.active { display: block; }
+        .page.show { display: block; }
 
         @keyframes fadeIn {
-            from { opacity: 0; filter: blur(5px); transform: translateY(10px); }
-            to { opacity: 1; filter: blur(0); transform: translateY(0); }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .name-title {
-            font-family: 'Fredoka', sans-serif;
-            font-weight: 600;
-            font-size: 2.5rem;
-            background: linear-gradient(45deg, #ff9a9e 0%, #a18cd1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0;
-            text-align: center;
+        h1, h2, h3 { 
+            font-family: 'Times New Roman', Times, serif; 
+            color: var(--text-main); 
+        }
+        
+        h1 { 
+            font-size: 3.5rem; 
+            margin-bottom: 35px; 
+            color: var(--primary);
+            font-style: italic;
         }
 
-        .content-card {
-            background: rgba(255, 255, 255, 0.6);
+        p {
+            font-weight: 300; 
+            line-height: 2.1;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: var(--text-body);
+            letter-spacing: 0.3px;
+        }
+
+        .project-embed {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.25%; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .project-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .highlight-card {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 30px;
             border-radius: 25px;
-            padding: 20px;
-            margin: 15px 0;
-            border: 1px solid white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            border-left: 6px solid var(--primary);
+            margin: 30px 0;
         }
 
-        .tag-pill {
-            display: inline-block;
+        /* --- UPDATED CONTACT FORM STYLES --- */
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 16px;
+            border-radius: 18px;
+            border: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            outline: none;
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300; /* Skinny font for form text */
+            transition: 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary);
             background: white;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            margin: 4px;
-            font-weight: 600;
-            color: #ff85a1;
-            border: 1px solid var(--soft-pink);
         }
 
-        h2 { font-family: 'Fredoka'; color: #a18cd1; margin-top: 0; }
-        h3 { font-family: 'Fredoka'; color: #ff85a1; margin-bottom: 5px; }
-        p { line-height: 1.6; font-size: 0.95rem; }
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 18px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
 
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: var(--soft-pink); border-radius: 10px; }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(162, 155, 254, 0.3);
+            background: #9088f3;
+        }
     </style>
 </head>
 <body>
 
-    <div class="blob"></div>
+    <nav>
+        <a onclick="show('about', this)" class="active-link">About Me</a>
+        <a onclick="show('projects', this)">Project</a>
+        <a onclick="show('resume', this)">Resume</a>
+        <a onclick="show('contact', this)">Contact</a>
+    </nav>
 
-    <div class="glass-container">
-        <nav>
-            <button class="nav-link" onclick="showPage('about')">Home ✨</button>
-            <button class="nav-link" onclick="showPage('projects')">Work 💻</button>
-            <button class="nav-link" onclick="showPage('resume')">Life 📝</button>
-            <button class="nav-link" onclick="showPage('contact')">Chat 💌</button>
-        </nav>
+    <div class="container">
+        
+        <section id="about" class="page show">
+            <h1>Hi, I'm Tanvi Desai</h1>
+            <p>My career goal is to become a software Engineer who can create technology which helps those living with Parkinson's disease. Someday and soon, I hope to make digital tools that can help detect the disease early so that they can get the best treatment and cure themselves sooner. I’m planning to achieve this goal by talking with professional therapists, joining research projects in both the computer science field and a little more about people's health, and expanding my nonprofit which focuses mainly on Parkinson's support. I am already speaking with a professional therapist to learn more about the disease and understand how I can better help people who are affected by it. This goal is very important to me because most people in my family are praised for becoming doctors, and my entire adolescence was about helping others, and I want to continue that same idea in my own way, a different way. Instead of following their pathway of going into the medical field, I want to use <strong>artificial intelligence</strong> to make a difference and help improve early disease detection.</p>
+            
+            <div class="highlight-card">
+                <p style="margin-bottom: 0;">Throughout middle school and the beginning of high school, I’ve built strong skills including, problem solving, communication, and the ability to stay focused on hard tasks. Working on projects for my nonprofit has taught me how to deal with planning events, working with adults, and communicating in a professional way. These experiences show that I can stay organized, think wisely, and work well with others by communicating.</p>
+            </div>
 
-        <main>
-            <section id="about" class="page active">
-                <h1 class="name-title">Hi, I'm Sukhman!</h1>
-                <div class="content-card">
-                    <h2>About Me</h2>
-                    <p>I am a computer science student at <strong>Dougherty Valley High School</strong> with a 4.0 GPA. I am deeply passionate about coding, problem-solving, and building aesthetic digital experiences.</p>
-                    <div style="text-align: center;">
-                        <span class="tag-pill">Python</span>
-                        <span class="tag-pill">Java</span>
-                        <span class="tag-pill">HTML/CSS</span>
-                        <span class="tag-pill">JavaScript</span>
-                    </div>
-                </div>
-            </section>
+            <p>Some of my most meaningful experiences or achievements include enlarging my nonprofit, looking at research opportunities as a high school freshman, and taking advanced classes to challenge myself. From these experiences, I have come to realize that I really enjoy helping others and finding answers and solutions that can make a real difference and impact. I also learned that I do well in group environments where teamwork, focus, and good communication matters. These skills help and connect to my long term goal of being able to use artificial intelligence to help detect Parkinson's disease early.</p>
 
-            <section id="projects" class="page">
-                <h1 class="name-title" style="font-size: 1.8rem;">My Creations 🎨</h1>
-                <div class="content-card">
-                    <h3>💎 Luxe Clothing Brand</h3>
-                    <p>Designed and developed a sleek, high-end website for a clothing brand. Focused on a luxury user experience with clean navigation and modern aesthetics.</p>
-                    <p style="font-size: 0.85rem; font-style: italic;">Created using HTML, CSS, and JS logic.</p>
-                </div>
-                <div class="content-card">
-                    <h3>🌟 Future Projects</h3>
-                    <p>I am currently exploring full-stack development and looking forward to integrating AI-driven features into my web apps!</p>
-                </div>
-            </section>
+            <p>Thank you for taking the time to listen and learn about my goals and experiences. I hope you are motivated and interested in exploring the rest of my site to see more of my work, ideas, and future plans.</p>
+        </section>
 
-            <section id="resume" class="page">
-                <h1 class="name-title" style="font-size: 1.8rem;">Experience 🎀</h1>
-                <div class="content-card">
-                    <h3>Education</h3>
-                    <p><strong>Dougherty Valley High School</strong><br>Current Student | GPA: 4.0</p>
-                </div>
-                <div class="content-card">
-                    <h3>Skills & Toolkit</h3>
-                    <p>Proficient in Python and Java. Currently mastering web technologies to create functional and pretty interfaces.</p>
-                </div>
-            </section>
+        <section id="projects" class="page">
+            <h1>Project</h1>
+            <div class="project-embed">
+                <iframe src="https://www.canva.com/design/DAG_kyy1VUc/QyUzHQ4DCdbTpq4zv3-o8w/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen"></iframe>
+            </div>
+            <p>This project was completed as part of my Computer Science Essentials (Class of 2026) coursework, where I developed two distinct applications that allowed me to explore both technical problem-solving and creative design. Throughout the process, I invested significant time and effort into understanding the underlying concepts, refining functionality, and iterating on my ideas to achieve meaningful outcomes.
 
-            <section id="contact" class="page" style="text-align: center;">
-                <h1 class="name-title">Let's Connect! ☁️</h1>
-                <div class="content-card">
-                    <p>I'm always looking for study buddies, collaborators, or internship opportunities.</p>
-                    <p style="font-weight: 600; color: #ff85a1; font-size: 1.1rem;">hello@sukhman.dev</p>
+                Working on these projects strengthened my passion for computer science and confirmed my interest in pursuing this pathway further. The challenges I encountered motivated me to push beyond the basic requirements, deepen my learning, and apply concepts with care and precision. These experiences played an important role in shaping my commitment to computer science and continue to influence how I approach learning and building technology-driven solutions.</p>
+        </section>
+
+        <section id="resume" class="page">
+            <h1>Resume</h1>
+            <p>High School Freshman | Advanced Computer Science Track</p>
+            <p><strong>Focus Areas:</strong> AI Research, Nonprofit Management, Public Health.</p>
+        </section>
+
+        <section id="contact" class="page">
+            <h1>Contact</h1>
+            <p>I am always looking to speak with researchers, therapists, or fellow developers. Please fill out the form below!</p>
+            
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter your name" required>
                 </div>
-                <p>Check out my code on GitHub!</p>
-            </section>
-        </main>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" placeholder="Your text here..." required></textarea>
+                </div>
+                
+                <button type="button" onclick="handleForm()">Send Message</button>
+            </form>
+        </section>
+
     </div>
 
     <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
+        function show(id, btn) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('show'));
+            document.getElementById(id).classList.add('show');
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active-link'));
+            btn.classList.add('active-link');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleForm() {
+            const name = document.getElementById('name').value;
+            if(name) {
+                alert('Thank you for reaching out, ' + name + '! Tanvi will get back to you soon.');
+            } else {
+                alert('Please fill out the form before sending.');
+            }
         }
     </script>
 </body>
